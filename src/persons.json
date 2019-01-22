@@ -1,0 +1,104 @@
+{
+  "persons": [
+    {
+      "name": "Michael",
+      "gender": "Ж",
+      "age": 23
+    },
+    {
+      "name": "Kristin",
+      "gender": "Ж",
+      "age": 24
+    },
+    {
+      "name": "Jones",
+      "gender": "Ж",
+      "age": 39
+    },
+    {
+      "name": "Casey",
+      "gender": "М",
+      "age": 28
+    },
+    {
+      "name": "Stephenson",
+      "gender": "М",
+      "age": 39
+    },
+    {
+      "name": "Diana",
+      "gender": "М",
+      "age": 49
+    },
+    {
+      "name": "Flores",
+      "gender": "М",
+      "age": 34
+    },
+    {
+      "name": "Natasha",
+      "gender": "Ж",
+      "age": 22
+    },
+    {
+      "name": "Lesa",
+      "gender": "М",
+      "age": 43
+    },
+    {
+      "name": "Sabrina",
+      "gender": "Ж",
+      "age": 39
+    },
+    {
+      "name": "Webster",
+      "gender": "Ж",
+      "age": 26
+    },
+    {
+      "name": "Moss",
+      "gender": "Ж",
+      "age": 49
+    },
+    {
+      "name": "Conley",
+      "gender": "М",
+      "age": 38
+    },
+    {
+      "name": "Celina",
+      "gender": "М",
+      "age": 22
+    },
+    {
+      "name": "Stevens",
+      "gender": "М",
+      "age": 23
+    },
+    {
+      "name": "Collier",
+      "gender": "М",
+      "age": 50
+    },
+    {
+      "name": "Roxie",
+      "gender": "Ж",
+      "age": 37
+    },
+    {
+      "name": "James",
+      "gender": "М",
+      "age": 24
+    },
+    {
+      "name": "Walters",
+      "gender": "М",
+      "age": 46
+    },
+    {
+      "name": "Cassandra",
+      "gender": "Ж",
+      "age": 27
+    }
+  ]
+}
