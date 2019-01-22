@@ -3,7 +3,6 @@ node_modules
 .idea
 public
 build
-docs
 .publish
 npm-debug.log
 .DS_Store
