@@ -1,0 +1,14 @@
+node_modules
+.tmp
+.idea
+public
+build
+docs
+.publish
+npm-debug.log
+.DS_Store
+.env
+aws-keys.json
+.awspublish-*
+.shipit
+dump
