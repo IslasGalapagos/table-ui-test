@@ -1,4 +1,4 @@
-import {changeFilter, setPersons} from './actions';
+import {changeFilter, setPersons, loaderOn, loaderOff} from './actions';
 import Gender from '../components/Header/Gender';
 
 const initialState = {
@@ -7,7 +7,8 @@ const initialState = {
     gender: Gender.values[0].key,
     age: 0
   },
-  persons: []
+  persons: [],
+  loader: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,12 @@ const reducer = (state = initialState, action) => {
 
     case setPersons.type:
       return {...state, persons: action.payload};
+
+    case loaderOn.type:
+      return {...state, loader: true};
+
+    case loaderOff.type:
+      return {...state, loader: false};
 
     default:
       return state;

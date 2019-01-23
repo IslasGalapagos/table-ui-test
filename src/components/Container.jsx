@@ -16,11 +16,16 @@ class Container extends PureComponent {
   }
 
   render() {
-    const {filters, persons, changeFilter} = this.props;
-
+    const {filters, persons, changeFilter, loader} = this.props;
+    console.log(loader);
     return (
       <React.StrictMode>
         <Global styles={commonStyles} />
+        {loader && (
+          <div className='loader'>
+            <span>Загрузка</span>
+          </div>
+        )}
         <TableHeader
           onInputChange={changeFilter}
           persons={persons}
@@ -34,6 +39,7 @@ class Container extends PureComponent {
 }
 
 Container.propTypes = {
+  loader: PropTypes.bool.isRequired,
   filters: PropTypes.shape({
     search: PropTypes.string.isRequired,
     gender: PropTypes.string.isRequired,
@@ -44,6 +50,7 @@ Container.propTypes = {
 };
 
 const mapStateToProps = store => ({
+  loader: store.loader,
   filters: store.filters,
   persons: store.persons
 });
