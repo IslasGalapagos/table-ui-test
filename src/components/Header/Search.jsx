@@ -7,19 +7,16 @@ class Search extends PureComponent {
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(event) {
-    this.setState({
-      value: event.target.value
-    });
-  }
+    const {value} = event.target;
 
-  onSubmit(event) {
-    if (event.keyCode === 13) {
-      this.props.onSubmit({search: this.state.value});
-    }
+    this.setState({
+      value: value
+    });
+
+    this.props.onChange({search: value});
   }
 
   render() {
@@ -34,7 +31,6 @@ class Search extends PureComponent {
           id='search'
           value={value}
           onChange={this.onChange}
-          onKeyUp={this.onSubmit}
         />
       </div>
     );
@@ -42,7 +38,7 @@ class Search extends PureComponent {
 }
 
 Search.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired
 };
 
 export default Search;

@@ -13,7 +13,7 @@ class TableHeader extends PureComponent {
     return (
       <div css={styles}>
         <fieldset disabled={!persons.length}>
-          <Search onSubmit={onInputChange} />
+          <Search onChange={onInputChange} />
           <Gender onChange={onInputChange} />
           <Age onChange={onInputChange} persons={persons} />
         </fieldset>
