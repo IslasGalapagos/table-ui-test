@@ -9,8 +9,6 @@ class Age extends PureComponent {
     };
 
     this.onChange = this.onChange.bind(this);
-    this.getOptions = this.getOptions.bind(this);
-    this.getFilteredPersons = this.getFilteredPersons.bind(this);
   }
 
   onChange(event) {

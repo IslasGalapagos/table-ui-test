@@ -5,12 +5,6 @@ import Gender from './Header/Gender';
 import styles from './Table.styles.js';
 
 class Table extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.createRows = this.createRows.bind(this);
-  }
-
   createRows() {
     const {
       persons,
