@@ -1,3 +1,5 @@
+import Gender from './Gender';
+
 class Age extends PureComponent {
   constructor(props) {
     super(props);
@@ -8,6 +10,7 @@ class Age extends PureComponent {
 
     this.onChange = this.onChange.bind(this);
     this.getOptions = this.getOptions.bind(this);
+    this.getFilteredPersons = this.getFilteredPersons.bind(this);
   }
 
   onChange(event) {
@@ -20,16 +23,36 @@ class Age extends PureComponent {
     this.props.onChange({age: +value});
   }
 
-  getOptions() {
-    const {persons} = this.props;
+  getFilteredPersons() {
+    const {persons, search, gender} = this.props;
+    const genders = Gender.values;
 
-    if (!persons.length) {
+    return persons.filter(person => {
+      let isSuitable = true;
+
+      if (search.length) {
+        isSuitable =
+          person.name.toUpperCase().indexOf(search.toUpperCase()) === 0;
+      }
+
+      if (isSuitable && gender !== genders[0].key) {
+        isSuitable =
+          (person.gender === genders[1].value && gender === genders[1].key) ||
+          (person.gender === genders[2].value && gender === genders[2].key);
+      }
+
+      return isSuitable;
+    });
+  }
+
+  getOptions() {
+    if (!this.props.persons.length) {
       return null;
     }
 
     const uniqeAges = {};
 
-    persons.forEach(person => {
+    this.getFilteredPersons().forEach(person => {
       const {age} = person;
 
       if (typeof uniqeAges[age] === 'undefined') {
@@ -64,6 +87,9 @@ class Age extends PureComponent {
 }
 
 Age.propTypes = {
+  persons: PropTypes.array.isRequired,
+  search: PropTypes.string.isRequired,
+  gender: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 };
 

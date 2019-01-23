@@ -8,14 +8,19 @@ import styles from './Header.styles.js';
 
 class TableHeader extends PureComponent {
   render() {
-    const {persons, onInputChange} = this.props;
+    const {persons, search, gender, onInputChange} = this.props;
 
     return (
       <div css={styles}>
         <fieldset disabled={!persons.length}>
           <Search onChange={onInputChange} />
           <Gender onChange={onInputChange} />
-          <Age onChange={onInputChange} persons={persons} />
+          <Age
+            onChange={onInputChange}
+            persons={persons}
+            search={search}
+            gender={gender}
+          />
         </fieldset>
       </div>
     );
@@ -23,6 +28,8 @@ class TableHeader extends PureComponent {
 }
 
 TableHeader.propTypes = {
+  search: PropTypes.string.isRequired,
+  gender: PropTypes.string.isRequired,
   persons: PropTypes.array.isRequired,
   onInputChange: PropTypes.func.isRequired
 };

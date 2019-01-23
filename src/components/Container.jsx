@@ -8,7 +8,7 @@ import Table from './Table';
 import {commonStyles} from './Container.styles';
 import {getPersonsThunk, changeFilter} from '../store/actions';
 
-class Container extends React.Component {
+class Container extends PureComponent {
   componentDidMount() {
     if (!this.props.persons.length) {
       this.props.getPersons();
@@ -21,7 +21,12 @@ class Container extends React.Component {
     return (
       <React.StrictMode>
         <Global styles={commonStyles} />
-        <TableHeader onInputChange={changeFilter} persons={persons} />
+        <TableHeader
+          onInputChange={changeFilter}
+          persons={persons}
+          search={filters.search}
+          gender={filters.gender}
+        />
         <Table persons={persons} filters={filters} />
       </React.StrictMode>
     );
