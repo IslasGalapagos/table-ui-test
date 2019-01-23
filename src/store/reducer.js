@@ -1,9 +1,10 @@
 import {changeFilter, setPersons} from './actions';
+import Gender from '../components/Header/Gender';
 
 const initialState = {
   filters: {
     search: '',
-    gender: 'all',
+    gender: Gender.values[0].key,
     age: 0
   },
   persons: []

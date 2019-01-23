@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/core';
 
+import Gender from './Header/Gender';
 import styles from './Table.styles.js';
 
 class Table extends PureComponent {
@@ -24,11 +25,13 @@ class Table extends PureComponent {
       });
     }
 
-    if (gender !== 'all') {
+    const genders = Gender.values;
+
+    if (gender !== genders[0].key) {
       filteredPersons = filteredPersons.filter(
         person =>
-          (person.gender === 'Ж' && gender === 'w') ||
-          (person.gender === 'М' && gender === 'm')
+          (person.gender === genders[1].value && gender === genders[1].key) ||
+          (person.gender === genders[2].value && gender === genders[2].key)
       );
     }
 

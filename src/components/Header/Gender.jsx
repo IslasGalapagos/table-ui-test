@@ -1,5 +1,5 @@
 class Gender extends PureComponent {
-  static genders = [
+  static values = [
     {
       key: 'all',
       value: 'Все'
@@ -18,7 +18,7 @@ class Gender extends PureComponent {
     super(props);
 
     this.state = {
-      selected: 'all'
+      selected: Gender.values[0].key
     };
 
     this.onChange = this.onChange.bind(this);
@@ -37,7 +37,7 @@ class Gender extends PureComponent {
   render() {
     const {selected} = this.state;
 
-    const genders = Gender.genders.map(data => (
+    const genders = Gender.values.map(data => (
       <div key={`g_${data.key}`} className='gender_item'>
         <label htmlFor={`g_${data.key}`}>{data.value}</label>
         <input
