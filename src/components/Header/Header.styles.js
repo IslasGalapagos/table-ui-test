@@ -1,4 +1,4 @@
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 
 export default css`
   margin-bottom: 40px;
@@ -15,16 +15,16 @@ export default css`
     vertical-align: top;
   }
 
-  .search_wrapper label,
+  .search_wrapper .label_text,
   .gender_wrapper legend,
-  .age_wrapper label {
+  .age_wrapper .label_text {
     font-weight: bold;
     margin-bottom: 10px;
   }
 
   .search_wrapper,
   .age_wrapper {
-    label {
+    .label_text {
       display: block;
     }
   }
@@ -41,12 +41,12 @@ export default css`
     display: inline-block;
     vertical-align: top;
 
-    label,
+    .label_text,
     input {
       vertical-align: top;
     }
 
-    label {
+    .label_text {
       margin-right: 5px;
     }
 
