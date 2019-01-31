@@ -1,28 +1,37 @@
-import {hot} from 'react-hot-loader';
-import {compose} from 'redux';
-import {connect} from 'react-redux';
-import {Global} from '@emotion/core';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { hot } from 'react-hot-loader';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Global } from '@emotion/core';
 
 import TableHeader from './Header';
 import Table from './Table';
-import {commonStyles} from './Container.styles';
-import {getPersonsThunk, changeFilter} from '../store/actions';
+import globalStyles from './Container.styles';
+import { getPersonsThunk, changeFilterAction } from '../store/actions';
 
 class Container extends PureComponent {
   componentDidMount() {
-    if (!this.props.persons.length) {
-      this.props.getPersons();
+    const { persons, getPersons } = this.props;
+
+    if (!persons.length) {
+      getPersons();
     }
   }
 
   render() {
-    const {filters, persons, changeFilter, loader} = this.props;
-    console.log(loader);
+    const {
+      filters,
+      persons,
+      changeFilter,
+      loader,
+    } = this.props;
+
     return (
       <React.StrictMode>
-        <Global styles={commonStyles} />
+        <Global styles={globalStyles} />
         {loader && (
-          <div className='loader'>
+          <div className="loader">
             <span>Загрузка</span>
           </div>
         )}
@@ -43,27 +52,28 @@ Container.propTypes = {
   filters: PropTypes.shape({
     search: PropTypes.string.isRequired,
     gender: PropTypes.string.isRequired,
-    age: PropTypes.number.isRequired
-  }),
-  persons: PropTypes.array.isRequired,
-  changeFilter: PropTypes.func.isRequired
+    age: PropTypes.number.isRequired,
+  }).isRequired,
+  persons: PropTypes.arrayOf(PropTypes.object).isRequired,
+  changeFilter: PropTypes.func.isRequired,
+  getPersons: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = store => ({
   loader: store.loader,
   filters: store.filters,
-  persons: store.persons
+  persons: store.persons,
 });
 
 const mapDispatchToProps = dispatch => ({
   getPersons: () => dispatch(getPersonsThunk()),
-  changeFilter: data => dispatch(changeFilter({payload: data}))
+  changeFilter: data => dispatch(changeFilterAction({ payload: data })),
 });
 
 export default compose(
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
   ),
-  hot(module)
+  hot(module),
 )(Container);

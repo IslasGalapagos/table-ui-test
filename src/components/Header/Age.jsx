@@ -1,3 +1,5 @@
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Gender from './Gender';
 
 class Age extends PureComponent {
@@ -5,38 +7,38 @@ class Age extends PureComponent {
     super(props);
 
     this.state = {
-      selected: ''
+      selected: '',
     };
 
     this.onChange = this.onChange.bind(this);
   }
 
   onChange(event) {
-    const {value} = event.target;
+    const { value } = event.target;
 
     this.setState({
-      selected: value
+      selected: value,
     });
 
-    this.props.onChange({age: +value});
+    const { onChange } = this.props;
+
+    onChange({ age: +value });
   }
 
   getFilteredPersons() {
-    const {persons, search, gender} = this.props;
+    const { persons, search, gender } = this.props;
     const genders = Gender.values;
 
-    return persons.filter(person => {
+    return persons.filter((person) => {
       let isSuitable = true;
 
       if (search.length) {
-        isSuitable =
-          person.name.toUpperCase().indexOf(search.toUpperCase()) === 0;
+        isSuitable = person.name.toUpperCase().indexOf(search.toUpperCase()) === 0;
       }
 
       if (isSuitable && gender !== genders[0].key) {
-        isSuitable =
-          (person.gender === genders[1].value && gender === genders[1].key) ||
-          (person.gender === genders[2].value && gender === genders[2].key);
+        isSuitable = (person.gender === genders[1].value && gender === genders[1].key)
+          || (person.gender === genders[2].value && gender === genders[2].key);
       }
 
       return isSuitable;
@@ -44,14 +46,16 @@ class Age extends PureComponent {
   }
 
   getOptions() {
-    if (!this.props.persons.length) {
+    const { persons } = this.props;
+
+    if (!persons.length) {
       return null;
     }
 
     const uniqeAges = {};
 
-    this.getFilteredPersons().forEach(person => {
-      const {age} = person;
+    this.getFilteredPersons().forEach((person) => {
+      const { age } = person;
 
       if (typeof uniqeAges[age] === 'undefined') {
         uniqeAges[age] = null;
@@ -66,16 +70,16 @@ class Age extends PureComponent {
   }
 
   render() {
-    const {selected} = this.state;
+    const { selected } = this.state;
 
     return (
-      <div className='age_wrapper'>
-        <label htmlFor='select_age'>Возраст</label>
+      <div className="age_wrapper">
+        <span className="label_text">Возраст</span>
         <select
-          id='select_age'
-          name='age'
+          name="age"
           value={selected}
-          onChange={this.onChange}>
+          onChange={this.onChange}
+        >
           <option value={0}>Все</option>
           {this.getOptions()}
         </select>
@@ -85,10 +89,10 @@ class Age extends PureComponent {
 }
 
 Age.propTypes = {
-  persons: PropTypes.array.isRequired,
+  persons: PropTypes.arrayOf(PropTypes.object).isRequired,
   search: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Age;

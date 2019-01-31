@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const {NODE_ENV = 'development'} = process.env;
+const { NODE_ENV = 'development' } = process.env;
 const isProduction = NODE_ENV === 'production';
 
 module.exports = {
@@ -18,14 +18,14 @@ module.exports = {
 
   entry: {
     bundle: './src/',
-    normilize: './node_modules/normalize.css/normalize'
+    normilize: './node_modules/normalize.css/normalize',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.css']
+    extensions: ['.js', '.jsx', '.json', '.css'],
   },
   output: {
     path: path.resolve(__dirname, 'docs'),
-    filename: '[name].js'
+    filename: '[name].js',
   },
 
   module: {
@@ -34,47 +34,42 @@ module.exports = {
         test: /\.jsx?$/,
         use: [
           {
-            loader: 'babel-loader'
-          }
-        ]
+            loader: 'babel-loader',
+          },
+        ],
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.ico$/,
         use: {
           loader: 'file-loader',
           options: {
-            name: 'images/favicon.ico'
-          }
-        }
-      }
-    ]
+            name: 'images/favicon.ico',
+          },
+        },
+      },
+    ],
   },
 
   plugins: [
     new CleanWebpackPlugin(['build']),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      inject: false
+      inject: false,
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].css',
     }),
-    new webpack.ProvidePlugin({
-      React: 'react',
-      PureComponent: ['react', 'PureComponent'],
-      PropTypes: 'prop-types'
-    })
   ],
 
   optimization: {
-    minimizer: [new UglifyJsPlugin(), new OptimizeCssAssetsPlugin()]
+    minimizer: [new UglifyJsPlugin(), new OptimizeCssAssetsPlugin()],
   },
 
   devServer: {
-    hot: true
-  }
+    hot: true,
+  },
 };

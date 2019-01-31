@@ -1,8 +1,8 @@
-export const commonStyles = {
+export default {
   body: {
     fontFamily: '"Helvetica Neu",Helvetica,Arial',
     padding: '25px',
-    backgroundColor: '#f9f9f9'
+    backgroundColor: '#f9f9f9',
   },
 
   '.loader': {
@@ -19,7 +19,7 @@ export const commonStyles = {
     span: {
       fontSize: '35px',
       fontStyle: 'italic',
-      color: '#5d5dff'
-    }
-  }
+      color: '#5d5dff',
+    },
+  },
 };

@@ -1,58 +1,50 @@
-class Gender extends PureComponent {
-  static values = [
-    {
-      key: 'all',
-      value: 'Все'
-    },
-    {
-      key: 'w',
-      value: 'Ж'
-    },
-    {
-      key: 'm',
-      value: 'М'
-    }
-  ];
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
+class Gender extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      selected: Gender.values[0].key
+      selected: Gender.values[0].key,
     };
 
     this.onChange = this.onChange.bind(this);
   }
 
   onChange(event) {
-    const {value} = event.target;
+    const { value } = event.target;
 
     this.setState({
-      selected: value
+      selected: value,
     });
 
-    this.props.onChange({gender: value});
+    const { onChange } = this.props;
+
+    onChange({ gender: value });
   }
 
   render() {
-    const {selected} = this.state;
+    const { selected } = this.state;
 
     const genders = Gender.values.map(data => (
-      <div key={`g_${data.key}`} className='gender_item'>
-        <label htmlFor={`g_${data.key}`}>{data.value}</label>
-        <input
-          type='radio'
-          name='gender'
-          id={`g_${data.key}`}
-          value={data.key}
-          checked={selected === data.key}
-          onChange={this.onChange}
-        />
+      <div key={`g_${data.key}`} className="gender_item">
+        <label htmlFor={`g_${data.key}`}>
+          <span className="label_text">{data.value}</span>
+          <input
+            type="radio"
+            name="gender"
+            id={`g_${data.key}`}
+            value={data.key}
+            checked={selected === data.key}
+            onChange={this.onChange}
+          />
+        </label>
       </div>
     ));
 
     return (
-      <fieldset className='gender_wrapper'>
+      <fieldset className="gender_wrapper">
         <legend>Пол</legend>
         {genders}
       </fieldset>
@@ -60,8 +52,23 @@ class Gender extends PureComponent {
   }
 }
 
+Gender.values = [
+  {
+    key: 'all',
+    value: 'Все',
+  },
+  {
+    key: 'w',
+    value: 'Ж',
+  },
+  {
+    key: 'm',
+    value: 'М',
+  },
+];
+
 Gender.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Gender;
