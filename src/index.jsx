@@ -6,6 +6,8 @@ import thunk from 'redux-thunk';
 import reducer from './store/reducer';
 import Container from './components/Container';
 
+import './images/favicon.ico';
+
 const store = createStore(reducer, undefined, applyMiddleware(thunk));
 
 render(
