@@ -33,8 +33,11 @@
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-less": "^3.1.2",
     "prettier": "^1.15.3",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.0.1",
@@ -43,9 +46,9 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.1",
     "action-helper": "^1.1.0",
     "axios": "^0.18.0",
+    "babel-plugin-react-css-modules": "^5.0.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
