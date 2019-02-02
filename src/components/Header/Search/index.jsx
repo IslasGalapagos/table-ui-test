@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+import './styles.less';
+
 class Search extends PureComponent {
   constructor(props) {
     super(props);
@@ -28,9 +30,9 @@ class Search extends PureComponent {
     const { value } = this.state;
 
     return (
-      <div className="search_wrapper">
+      <div styleName="wrapper">
         <label htmlFor="search">
-          <span className="label_text">Поиск по имени</span>
+          <span styleName="label_text">Поиск по имени</span>
           <input
             type="text"
             name="search"

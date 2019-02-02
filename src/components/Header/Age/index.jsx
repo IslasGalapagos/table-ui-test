@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Gender from './Gender';
+import Gender from '../Gender';
+
+import './styles.less';
 
 class Age extends PureComponent {
   constructor(props) {
@@ -73,8 +75,8 @@ class Age extends PureComponent {
     const { selected } = this.state;
 
     return (
-      <div className="age_wrapper">
-        <span className="label_text">Возраст</span>
+      <div styleName="wrapper">
+        <span styleName="label_text">Возраст</span>
         <select
           name="age"
           value={selected}

@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+import './styles.less';
+
 class Gender extends PureComponent {
   constructor(props) {
     super(props);
@@ -28,9 +30,9 @@ class Gender extends PureComponent {
     const { selected } = this.state;
 
     const genders = Gender.values.map(data => (
-      <div key={`g_${data.key}`} className="gender_item">
+      <div key={`g_${data.key}`} styleName="item">
         <label htmlFor={`g_${data.key}`}>
-          <span className="label_text">{data.value}</span>
+          <span styleName="label_text">{data.value}</span>
           <input
             type="radio"
             name="gender"
@@ -44,7 +46,7 @@ class Gender extends PureComponent {
     ));
 
     return (
-      <fieldset className="gender_wrapper">
+      <fieldset styleName="wrapper">
         <legend>Пол</legend>
         {genders}
       </fieldset>

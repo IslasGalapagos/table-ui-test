@@ -1,12 +1,11 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
 
 import Search from './Search';
 import Gender from './Gender';
 import Age from './Age';
-import styles from './Header.styles';
+
+import './styles.less';
 
 class TableHeader extends PureComponent {
   render() {
@@ -18,7 +17,7 @@ class TableHeader extends PureComponent {
     } = this.props;
 
     return (
-      <div css={styles}>
+      <div styleName="wrapper">
         <fieldset disabled={!persons.length}>
           <Search onChange={onInputChange} />
           <Gender onChange={onInputChange} />

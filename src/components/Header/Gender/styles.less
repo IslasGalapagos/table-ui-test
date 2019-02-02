@@ -1,0 +1,33 @@
+.wrapper {
+  display: inline-block;
+  vertical-align: top;
+
+  margin: 0 30px;
+
+  legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+
+.item {
+  display: inline-block;
+  vertical-align: top;
+
+  .label_text,
+  input {
+    vertical-align: top;
+  }
+
+  .label_text {
+    margin-right: 5px;
+  }
+
+  input {
+    cursor: pointer;
+  }
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}

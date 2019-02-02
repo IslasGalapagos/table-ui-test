@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Global } from '@emotion/core';
 
 import TableHeader from './Header';
 import Table from './Table';
-import globalStyles from './Container.styles';
 import { getPersonsThunk, changeFilterAction } from '../store/actions';
+
+import './container.less';
 
 class Container extends PureComponent {
   componentDidMount() {
@@ -29,7 +29,6 @@ class Container extends PureComponent {
 
     return (
       <React.StrictMode>
-        <Global styles={globalStyles} />
         {loader && (
           <div className="loader">
             <span>Загрузка</span>

@@ -1,10 +1,9 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
 
-import Gender from './Header/Gender';
-import styles from './Table.styles';
+import Gender from '../Header/Gender';
+
+import './styles.less';
 
 class Table extends PureComponent {
   createRows() {
@@ -53,8 +52,8 @@ class Table extends PureComponent {
 
   render() {
     return (
-      <table css={styles}>
-        <thead>
+      <table styleName="table">
+        <thead styleName="header">
           <tr>
             <td>Имя</td>
             <td>Пол</td>
